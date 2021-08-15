@@ -1,13 +1,15 @@
 var read = require('readline-sync');
+
 const chalk = require('chalk');
-var name = read.question('What is your name ');
-console.log(chalk.yellowBright('Welcome ' + name));
-console.log(chalk.yellowBright('This quize consists of 6 questions,each question carries 1 points and -1 for every wrong answer'));
+console.log(chalk.green("Welcome"));
+var name = read.question('What is your name? ');
+console.log(chalk.yellowBright('Hi ' , name,"let's play the quiz"));
+console.log(chalk.greenBright('This quize consists of 6 questions,each question carries 1 points and -1 for every wrong answer'));
 
 console.log("***************************************************************************");
 
 var score = 0;
-
+var highestScore = 4;
 
 
 
@@ -31,25 +33,24 @@ function play(question, answer) {
 
 
 var questions1 = [{
-  question: chalk.yellow('Which is the capital city of India  '),
-  answer: 'New Delhi'
+  question: chalk.yellow('1. What is my full name  '),
+  answer: 'Veeresh B V'
 }, {
-  question: chalk.yellow('Who is the messile man of India  '),
-  answer: 'Abdul Kalam'
+  question: chalk.yellow('2. you know from which city I come from?  '),
+  answer: 'Chitraduraga'
 }, {
-  question: chalk.yellow('Which city is called as the Garden City  '),
-  answer: 'Bangalore'
+  question: chalk.yellow('3. You know what I study? '),
+  answer: 'Bengaluru'
 }, {
-  question: chalk.yellow('Which Launguage has got the highest number Jnanapeetha Awards  '),
+  question: chalk.yellow('4. Name the high school where I studied '),
   answer: 'Kannada'
 }, {
-  question: chalk.yellow('Who is the present chief minister of Karanataka  '),
-  answer: 'B S Yediyurappa'
-}, {
-  question: chalk.yellow('Who is called as the Viswa Guru  '),
-  answer: 'Basavanna'
-}
-
+  question: chalk.yellow('5. Which is my favorite IDE '),
+  answer: 'VsCode'
+},{
+  question: chalk.yellow('6. who is my favorite hero '),
+  answer: 'Real Star Upendra '
+} 
 ];
 
 for (var i = 0; i < questions1.length; i++) {
@@ -57,8 +58,17 @@ for (var i = 0; i < questions1.length; i++) {
   play(currentQuestion.question, currentQuestion.answer)
 }
 console.log(chalk.cyanBright('THANK YOU FOR PLAYING THE QUIZ'));
-console.log(chalk.cyanBright('Your total score is ' + score))
 
+if(score > highestScore){
+  console.log("Congratulations you have the highest score");
+  console.log("The previous highest score was " + highestScore);
+}else{
+  console.log("The highest score is " + highestScore);
+  console.log(chalk.cyanBright('Your total score is ' + score));
+}
+
+
+console.log("");
 console.log('The correct answers are as follows');
 for (var i = 0; i < questions1.length; i++) {
   var current = questions1[i];
